@@ -1,10 +1,10 @@
 import React from "react";
 
-function TodoItem(){
+function TodoItem(props){
 
     return (
         <div>
-            <p>투두리스트 만들기</p>
+            {props.item}
         </div>
     )
 }

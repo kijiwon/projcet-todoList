@@ -1,12 +1,12 @@
 import React from "react"
 import TodoItem from "./TodoItem"
 
-function TodoBoard(){
+function TodoBoard(props){
     
     return (
         <div>
-            <h2>To-Do board</h2>
-            <TodoItem/>
+            <h4>To-Do board</h4>
+            {props.todoList.map((item)=> <TodoItem item={item}/>)}
         </div>
     )
 }

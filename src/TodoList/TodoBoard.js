@@ -5,7 +5,8 @@ function TodoBoard(props){
     
     return (
         <div>
-            <h4>To-Do board</h4>
+            <h4>오늘은 ...</h4>
+            {`total : ${props.todoList.length}`}
             {props.todoList.map((item)=> <TodoItem item={item}/>)}
         </div>
     )

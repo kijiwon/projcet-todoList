@@ -1,26 +1,26 @@
 import React, { useState } from "react";
 import "./todoList.css";
-import { BsCheckSquare,BsSquare,BsSquareFill,BsSquareHalf } from 'react-icons/bs';
+import { BsCheckSquare,BsSquare,BsSquareFill,BsSquareHalf ,BsTrashFill} from 'react-icons/bs';
+// import {BiEditAlt} from 'react-icons/bi'
 
-function TodoItem(props){
-    const {checked} = props.item.checked;
-    const [checkedItem,setCheckedItem] = useState(props.item.chacked)
-    const changeState = ()=>{
-        setCheckedItem(!checkedItem)
-    }
-    console.log(props.item)
+function TodoItem({item,removeItem,isChecked}){
+    // const {id, text, checked} = {item}
 
     return (
-        <div className="todoItem">
-            <div className={`todoState ${checked ? checked : ''}`}>
-                {checked ? <BsSquareFill/> : <BsSquare/>}
+        <li className="todoItem" key={item.id}>
+            {/* checked=true일 때 checked라는 class를 추가  */}
+            <div className={`todoState ('checkbox', { checked })`}>
+                {/* checked=true면 체크된 박스 아이콘이 false면 빈 박스 아이콘이 뜸 */}
+                {item.checked ? <BsCheckSquare/> : <BsSquare/>}
             </div>
+            <div className="todo_item">
+            {item.text}
+            </div>
+            <button onClick={()=>isChecked(item.id)}>완료</button>
             <div>
-            {props.item.text}
+                <BsTrashFill  onClick={()=>removeItem(item.id)}/>
             </div>
-            <button onClick={changeState}>완료</button>
-            <button>삭제</button>
-        </div>
+        </li>
     )
 }
 

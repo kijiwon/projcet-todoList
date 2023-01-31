@@ -1,13 +1,18 @@
 import React from "react"
 import TodoItem from "./TodoItem"
 
-function TodoBoard(props){
+function TodoBoard({todoList,removeItem,isChecked}){
     
     return (
         <div>
             <h4>오늘은 ...</h4>
-            {`total : ${props.todoList.length}`}
-            {props.todoList.map((item)=> <TodoItem item={item}/>)}
+            {`total : ${todoList.length}`}
+            {todoList.map((item)=> <TodoItem 
+                item={item} 
+                key={item.id} 
+                removeItem={removeItem}
+                isChecked = {isChecked}
+            />)}
         </div>
     )
 }

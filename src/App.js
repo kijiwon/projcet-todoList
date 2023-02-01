@@ -1,23 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import { useState } from 'react';
 import TodoBoard from './TodoList/TodoBoard';
+import {BsFillPlusCircleFill} from 'react-icons/bs'
+import {GoTriangleLeft,GoTriangleRight} from 'react-icons/go'
 
 
 function App() {
+  // localStorage에 초기값 설정
+  // 입력되는 todoList가져오기
+  const initialState = JSON.parse(localStorage.getItem('todoList')) || [];
   const [inputValue,setInputValue] = useState('');
-  const [todoList,setTodoList] = useState([
-    {
-      id : 1,
-      text : '밥먹기',
-      checked : false
-    },
-    {
-      id : 2,
-      text : '자기',
-      checked : true
-    }
-  ]);
+  const [todoList,setTodoList] = useState(initialState);
+  // localStorage에 저장하기
+  useEffect(()=>{
+    localStorage.setItem('todoList',JSON.stringify(todoList));
+  },[todoList])
   // 아이텀 추가 버튼 동작
   const addItem= () =>{
     if(inputValue.length===0){
@@ -25,6 +23,7 @@ function App() {
     } else{
       const todo = {
         id : todoList.length,
+        createdAt : new Date().toISOString(),
         text : inputValue,
         checked : false
       }
@@ -33,6 +32,7 @@ function App() {
 
     }
   }
+  console.dir(todoList)
   // 입력된 값 가져오기
   const itemValue = (envnt) =>{
     setInputValue(envnt.target.value)
@@ -46,22 +46,27 @@ function App() {
   // checked의 값을 반대로 바꿔줌
   // else인경우는 그냥 반환
   const isChecked = id => {
-    setTodoList(todoList=> todoList.map(item=> item.id === id?  { ...item, checked: !item.checked } : item))
+    setTodoList(todoList=> todoList.map(todo=> todo.id === id?  { ...todo, checked: !todo.checked } : todo))
   }
 
-  
   return (
     <div className="App">
       <div>
         <h1>오늘의 할 일</h1>
       </div>
-      <input type="text" value={inputValue} onChange={itemValue}/>
-      <button type='submit' onClick={addItem}>등록하기</button>
-      <TodoBoard 
-        todoList={todoList}
-        removeItem = {removeItem}  
-        isChecked = {isChecked}
-      />
+      <div className='addItem'>
+        <input className='inputItem' type="text" value={inputValue} onChange={itemValue}/>
+        <BsFillPlusCircleFill className='inputBtn' type='submit' onClick={addItem}/>
+      </div>
+      <div className='component'>
+        <GoTriangleLeft className='goLeft'/>
+        <TodoBoard 
+          todoList={todoList}
+          removeItem = {removeItem}  
+          isChecked = {isChecked}
+        />
+        <GoTriangleRight className='goRight'/>
+      </div>
     </div>
   );
 }

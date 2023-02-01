@@ -1,43 +1,72 @@
-/* .App {
-  text-align: center;
+:root{
+  font-size: 10px;
+  --navy--dark : rgb(15, 4, 76);
+  --navy--origin: rgb(20, 30, 97);
+  --navy--gray: rgb(120, 122, 145);
+  --white: rgb(238, 238, 238);
+  --cocoa--brown: rgb(129, 91, 91);
+  --cocoa : rgb(158, 118, 118);
+  --purple--gray : rgb(113, 111, 129);
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
 body{
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* background-image: url(./../배경.jpeg); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: -150px;
+  /* background-color: var(--white); */
+}
+.App{
+  margin-top: 7rem;
+  border: 0.5px solid var(--purple--gray);
+  box-shadow: 10px -10px 2px var(--cocoa--brown);
+  height: 80vh;
+  width: 35vw;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  min-width: 350px;
+  background-color: var(--white)
+  
+}
+.component{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+h1{
+  font-size: 5rem;
+  margin-top: 2rem;
+  color: var(--cocoa--brown);
+}
+.addItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+.inputItem {
+  width: 30rem;
+  height: 3rem;
+  border-radius: 25px;
+  border: 0.5px solid saddlebrown;
+  padding-left: 20px;
+  font-size: 1.6rem;
+}
+.inputBtn{
+  font-size: 2.7rem;
+  margin-left: 50px;
+  margin-top: 3px;
+}
+.goLeft{
+  font-size: 2.5rem;
+  padding-bottom: 250px;
+}
+.goRight{
+  font-size: 2.5rem;
+  padding-bottom: 250px;
 }

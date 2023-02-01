@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 :root{
   font-size: 10px;
+  /* font-family: 'Do Hyeon', sans-serif; */
+  font-family: 'Nanum Brush Script', cursive;
   --navy--dark : rgb(15, 4, 76);
   --navy--origin: rgb(20, 30, 97);
   --navy--gray: rgb(120, 122, 145);

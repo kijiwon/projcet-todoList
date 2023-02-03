@@ -17,13 +17,14 @@ function App() {
     localStorage.setItem('todoList',JSON.stringify(todoList));
   },[todoList])
   // 아이텀 추가 버튼 동작
+  console.log(todoList)
   const addItem= () =>{
     if(inputValue.length===0){
       alert('내용을 입력해주세요')
     } else{
       const todo = {
         id : todoList.length,
-        createdAt : new Date().toISOString(),
+        createdAt : new Date().toLocaleDateString(),
         text : inputValue,
         checked : false
       }
@@ -32,7 +33,7 @@ function App() {
 
     }
   }
-  console.dir(todoList)
+
   // 입력된 값 가져오기
   const itemValue = (envnt) =>{
     setInputValue(envnt.target.value)

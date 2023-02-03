@@ -1,6 +1,6 @@
 import React from "react";
 import "./todoList.css";
-import { BsCheckSquare,BsSquare,BsSquareFill,BsSquareHalf ,BsTrashFill} from 'react-icons/bs';
+import { BsCheckSquare,BsSquare,BsTrashFill, BsPencilSquare} from 'react-icons/bs';
 // import {BiEditAlt} from 'react-icons/bi'
 import {MdDoneOutline} from 'react-icons/md'
 function TodoItem({item,removeItem,isChecked}){
@@ -18,6 +18,7 @@ function TodoItem({item,removeItem,isChecked}){
             <div className={`todo-item ${item.checked ? "checkedItem" : ""}`}>
                 {item.text}
             </div>
+            <BsPencilSquare className="btn-edit"/>
             <MdDoneOutline className="btn-check" onClick={()=>isChecked(item.id)}/>
             <BsTrashFill  className="btn-remove" onClick={()=>removeItem(item.id)}/>
         </div>

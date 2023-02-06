@@ -57,12 +57,13 @@
     width: 150px;
     text-align: start;
     padding-top: 0.4rem;
+    cursor: pointer;
 }
 .checkedItem{
     text-decoration: line-through;
     color: #868e96;
 }
-.btn-check{
+.btn-edit-done{
     width: 20px;
     cursor: pointer;
     padding-top: 0.4rem;

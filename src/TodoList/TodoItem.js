@@ -3,9 +3,10 @@ import "./todoList.css";
 import { BsCheckSquare,BsSquare,BsTrashFill, BsPencilSquare} from 'react-icons/bs';
 // import {BiEditAlt} from 'react-icons/bi'
 import {MdDoneOutline} from 'react-icons/md'
-function TodoItem({item,removeItem,isChecked}){
-    // const {id, text, checked} = {item}
+
+function TodoItem({item,removeItem,isChecked,btnEdit}){
     // const parsedDate = new Date(item.createdAt).toLocaleDateString('ko-kr');
+    // 수정모드
 
     return (
         <div className="todoItem" key={item.id}>
@@ -15,11 +16,11 @@ function TodoItem({item,removeItem,isChecked}){
                 {item.checked ? <BsCheckSquare/> : <BsSquare/>}
             </div>
             {/* checked상태일시 className추가 */}
-            <div className={`todo-item ${item.checked ? "checkedItem" : ""}`}>
+            <div className={`todo-item ${item.checked ? "checkedItem" : ""}`} onClick={()=>isChecked(item.id)}>
                 {item.text}
             </div>
             <BsPencilSquare className="btn-edit"/>
-            <MdDoneOutline className="btn-check" onClick={()=>isChecked(item.id)}/>
+            <MdDoneOutline className="btn-edit-done" />
             <BsTrashFill  className="btn-remove" onClick={()=>removeItem(item.id)}/>
         </div>
     )

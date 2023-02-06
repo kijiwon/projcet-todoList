@@ -49,7 +49,10 @@ function App() {
   const isChecked = id => {
     setTodoList(todoList=> todoList.map(todo=> todo.id === id?  { ...todo, checked: !todo.checked } : todo))
   }
-
+  // 수정 버튼 구현
+  const btnEdit = (changeId,newItem)=>{
+    setTodoList(todoList.map((todo,id)=>id===changeId? newItem : todo))
+  }
   return (
     <div className="App">
       <div>
@@ -65,6 +68,7 @@ function App() {
           todoList={todoList}
           removeItem = {removeItem}  
           isChecked = {isChecked}
+          btnEdit = {btnEdit}
         />
         <GoTriangleRight className='goRight'/>
       </div>

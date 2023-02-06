@@ -1,0 +1,48 @@
+import React, { useState } from "react";
+import "./todoList.css";
+import { BsCheckSquare,BsSquare,BsTrashFill, BsPencilSquare} from 'react-icons/bs';
+import {MdDoneOutline} from 'react-icons/md'
+import {AiFillCloseSquare} from 'react-icons/ai'
+function TodoEdit({item,removeItem,isChecked,btnEdit}){
+    // const parsedDate = new Date(item.createdAt).toLocaleDateString('ko-kr');
+    // 수정모드
+    const [editStatus,setEditStatus] = useState(false)
+    const [newTodo, setNewTodo] = useState(item.text)
+    const editItem = () =>{
+        btnEdit(item.id,newTodo);
+        setEditStatus(false);
+    }
+    const editCancle = () =>{
+        setEditStatus(false);
+        setNewTodo(item.text)
+    }
+    return (
+        <div className="todoItem" key={item.id}>
+            {/* checked=true일 때 checked라는 class를 추가  */}
+            <div className={`todoState ('checkbox', { checked })`}>
+                {/* checked=true면 체크된 박스 아이콘이 false면 빈 박스 아이콘이 뜸 */}
+                {item.checked ? <BsCheckSquare/> : <BsSquare/>}
+            </div>
+            <div>
+                {editStatus? (
+                    <div>
+                        <input type='text' value={newTodo} onChange={(target)=>setNewTodo(target.value)}/>
+                        <BsPencilSquare onClick={editItem()}/>
+                        <AiFillCloseSquare onClick={editCancle}/>
+                    </div>)
+                    : ( <div>
+                            {/* checked상태일시 className추가 */}
+                            <div className={`todo-item ${item.checked ? "checkedItem" : ""}`} onClick={()=>isChecked(item.id)}>
+                                {item.text}
+                            </div>
+                            <BsPencilSquare className="btn-edit" onClick={()=>setEditStatus(true)}/>
+                    </div>)
+                }
+                <MdDoneOutline className="btn-edit-done" />
+                <BsTrashFill  className="btn-remove" onClick={()=>removeItem(item.id)}/>
+            </div>
+        </div>
+    )
+}
+
+export default TodoEdit;

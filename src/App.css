@@ -68,8 +68,10 @@ h1{
 .goLeft{
   font-size: 2.5rem;
   padding-bottom: 250px;
+  /* position: fixed; */
 }
 .goRight{
   font-size: 2.5rem;
   padding-bottom: 250px;
+  /* position: fixed; */
 }
